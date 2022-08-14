@@ -10,7 +10,6 @@ import java.util.List;
 
 
 @Repository
-@Transactional
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
@@ -44,8 +43,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findByUsername(String email) {
-        return entityManager.createQuery("SELECT user FROM User user WHERE user.email=:email", User.class).setParameter("email", email).getSingleResult();
+
+        String Query = "SELECT user from User user join fetch user.roles where user.email = :email";
+        return entityManager.createQuery(Query, User.class).setParameter("email", email).getSingleResult();
     }
-
-
 }

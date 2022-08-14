@@ -15,12 +15,11 @@ public class AdminController {
 
     private final RoleService roleService;
 
-    @Autowired
+
     public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
-
     @GetMapping("/admin/users")
     public String index(Model model) {
         model.addAttribute("users", userService.getAllUsers());
