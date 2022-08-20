@@ -25,15 +25,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                //Доступ разрешен всем пользователей
                 .antMatchers("/login").permitAll()
-                 //Доступ только для пользователей с ролью Админ
                 .antMatchers("/user/**").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/**").hasAuthority("ADMIN")
-                //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
                 .and()
-                //Настройка для входа в систему
                 .formLogin().successHandler(successUserHandler)
                 .permitAll()
                 .and()

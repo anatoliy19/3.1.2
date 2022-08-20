@@ -2,6 +2,8 @@ package ru.kata.spring.boot_security.demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -18,6 +20,8 @@ public class Role implements GrantedAuthority {
     private Long id;
     private String name;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
     private Set<User> users;
 

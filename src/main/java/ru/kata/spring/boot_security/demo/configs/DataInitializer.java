@@ -25,7 +25,7 @@ public class DataInitializer {
     @PostConstruct
     private void init() {
 
-        Role role1 = new Role("ADMIN");
+       /* Role role1 = new Role("ADMIN");
         Role role2 = new Role("USER");
         roleService.saveRole(role1);
         roleService.saveRole(role2);
@@ -71,6 +71,6 @@ public class DataInitializer {
         userService.saveUser(user2);
         userService.saveUser(user3);
         userService.saveUser(user4);
-        userService.saveUser(user5);
+        userService.saveUser(user5);*/
     }
 }
